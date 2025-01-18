@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrapped 2024</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin: 20px 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h1 span {
+            color: #1DB954; /* Spotify green */
+        }
+        .song {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 500px;
+        }
+        iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+        }
+        .input-container {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .input-container input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.5rem;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 6rem;
+            color: #1DB954;
+            display: none;
+        }
+        header {
+            background-color: #f5f5f5;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        header span {
+            font-size: 1.5rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/index.html">
+            <img src="/Images/Logo.png" alt="Logo">
+        </a>
+    </header>
+    <h1>Spotify Wrapped 202<span>4</span></h1>
+
+    <div class="song">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3dI59jLoFMjMAyUAyRZnkE?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="song">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0DvArwBhUjoOaRjluR7gCr?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="song">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6ZITsss1URNOIKhniylpBP?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="song">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2AMysGXOe0zzZJMtH3Nizb?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <div class="input-container">
+        <input type="text" maxlength="1" id="digit1" oninput="moveFocus(1)">
+        <input type="text" maxlength="1" id="digit2" oninput="moveFocus(2)">
+        <input type="text" maxlength="1" id="digit3" oninput="moveFocus(3)">
+        <input type="text" maxlength="1" id="digit4" oninput="moveFocus(4)">
+    </div>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div class="result" id="result">✔️</div>
+
+    <script>
+
+        async function generateSHA256Hash(input) {
+                    const encoder = new TextEncoder();
+                    const data = encoder.encode(input);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+                    return hashHex;
+                }
+
+        function moveFocus(current) {
+            const nextInput = document.getElementById(`digit${current + 1}`);
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+
+        function checkAnswer() {
+            const correctAnswer = "891034f11fbd8f2231c202f2a6cb8970fc7eab28325eca8855ea4fdc50f564ec";
+            let userAnswer = "";
+
+            for (let i = 1; i <= 4; i++) {
+                userAnswer += document.getElementById(`digit${i}`).value;
+            }
+
+            generateSHA256Hash(userAnswer.toLowerCase()).then(hash => {
+            if (hash === correctAnswer) {
+                document.getElementById('result').style.display = 'block';
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+            else{
+                document.getElementById('result').style.display = 'none';
+            }
+            });
+        }
+    </script>
+</body>
+</html>
