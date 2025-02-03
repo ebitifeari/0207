@@ -139,36 +139,5 @@
         <li>Na koniec odejmij jeszcze pięciogwiazdkowy performance Lisy od dotychczasowego wyniku.</li>
     </ol>
 </div>
-<div class="input-container">
-    <input type="text" maxlength="1" id="digit1">
-    <input type="text" maxlength="1" id="digit2">
-    <input type="text" maxlength="1" id="digit3">
-    <input type="text" maxlength="1" id="digit4">
-</div>
-<button onclick="checkAnswer()">Submit</button>
-<div class="result" id="result">✔️</div>
-<script>
-    async function generateSHA256Hash(input) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(input);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-    }
-    function checkAnswer() {
-        const correctAnswer = "96c56127d5ff132709622ca8baa85cd3c5e7aac98c38a5652a12f6e979d78a6d";
-        let userAnswer = "";
-        for (let i = 1; i <= 4; i++) {
-            userAnswer += document.getElementById(`digit${i}`).value;
-        }
-        generateSHA256Hash(userAnswer.toLowerCase()).then(hash => {
-            if (hash === correctAnswer) {
-                document.getElementById('result').style.display = 'block';
-            } else {
-                document.getElementById('result').style.display = 'none';
-            }
-        });
-    }
-</script>
 </body>
 </html>
