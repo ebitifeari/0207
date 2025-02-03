@@ -29,10 +29,6 @@
             height: 50px;
             margin-right: 15px;
         }
-        header span {
-            font-size: 1.5rem;
-            color: white;
-        }
         h1 {
             font-size: 2.5rem;
             margin: 20px 0;
@@ -46,8 +42,8 @@
             margin: 20px;
         }
         .preview {
-            width: 400px; /* Increased size */
-            height: 300px; /* Increased size */
+            width: 400px;
+            height: 300px;
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -58,52 +54,30 @@
             height: 100%;
             object-fit: cover;
         }
-        .code-container {
-            margin-top: 20px;
+        .steps {
+            text-align: left;
+            max-width: 600px;
+            margin: 40px auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .code-container label {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-        .code-inputs {
+        .input-container {
+            margin: 20px auto;
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 10px 0;
         }
-        .code-inputs input {
+        .input-container input {
             width: 40px;
             height: 40px;
             text-align: center;
-            font-size: 1.2rem;
-            border: 1px solid #ccc;
+            font-size: 1.5rem;
+            border: 2px solid #ccc;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .code-container button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .code-container button:hover {
-            background-color: #0056b3;
-        }
-        .math-labels {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 5px;
-        }
-        .math-labels div {
-            width: 40px;
-            text-align: center;
-            font-size: 0.9rem;
         }
         .result {
             margin-top: 20px;
@@ -111,56 +85,90 @@
             color: #1DB954;
             display: none;
         }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-<!-- <a href="/index.html" class="preview">
-<pre>
-0    0
-|    |
-___|____|___
- 0  |~ ~ ~ ~ ~ ~|   0
- |  |           |   |
-___|__|___________|___|__
-|/\/\/\/\/\/\/\/\/\/\/\/|
-0   |       H a p p y       |   0
-|   |/\/\/\/\/\/\/\/\/\/\/\/|   |
- _|___|_______________________|___|__
-|/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/|
-|                                   |
-|         B i r t h d a y! ! !      |
-| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
-|___________________________________|
-</pre>
-</a> -->
-
 <header>
     <a href="/0207">
         <img src="/0207/Images/Logo.png" alt="Logo">
     </a>
 </header>
-
-    <div class="container">
-        <a href="/0207/Crossword.html" class="preview">
-            <img src="/0207/Images/Crossword.png" alt="Crossword Preview">
-        </a>
-        <a href="/0207/Wrapped.html" class="preview">
-            <img src="/0207/Images/Wrapped.png" alt="Wrapped Preview">
-        </a>
-        <a href="/0207/Riddle.html" class="preview">
-            <img src="/0207/Images/Riddle.png" alt="Riddle Preview">
-        </a>
-    </div>
-    <div class="container">
-        <a href="/0207/Rotten.html" class="preview">
-            <img src="/0207/Images/Rotten.png" alt="Rotten Preview">
-        </a>
-        <a href="/0207/Quotes.html" class="preview">
-            <img src="/0207/Images/HappilyEverAfter.png" alt="Quotes Preview">
-        </a>
-        <a href="/0207/Genshin.html" class="preview">
-            <img src="/0207/Images/Genshin.png" alt="Genshin Preview">
-        </a>
-    </div>
+<div class="container">
+    <a href="/0207/Crossword.html" class="preview">
+        <img src="/0207/Images/Crossword.png" alt="Crossword Preview">
+    </a>
+    <a href="/0207/Wrapped.html" class="preview">
+        <img src="/0207/Images/Wrapped.png" alt="Wrapped Preview">
+    </a>
+    <a href="/0207/Riddle.html" class="preview">
+        <img src="/0207/Images/Riddle.png" alt="Riddle Preview">
+    </a>
+</div>
+<div class="container">
+    <a href="/0207/Rotten.html" class="preview">
+        <img src="/0207/Images/Rotten.png" alt="Rotten Preview">
+    </a>
+    <a href="/0207/Quotes.html" class="preview">
+        <img src="/0207/Images/HappilyEverAfter.png" alt="Quotes Preview">
+    </a>
+    <a href="/0207/Genshin.html" class="preview">
+        <img src="/0207/Images/Genshin.png" alt="Genshin Preview">
+    </a>
+</div>
+<div class="steps">
+    <h2>Instrukcja</h2>
+    <ol>
+        <li>Zacznij od wyniku zagadki otrzymanej od Freakboba.</li>
+        <li>Weź kolejność w alfabecie Polskim siódmej litery hasła krzyżówki i przemnóż przez ilość samogłosek w tym haśle. Odejmij otrzymaną wartość od dotychczasowego wyniku.</li>
+        <li>Przetłumacz imię podane Ci przez Stephanie Soo na polski i policz ile to słowo ma liter. Dodaj tę ilość liter do wyniku.</li>
+        <li>Przemnóż przez siebie wszystkie cyfry ciągu Żyjącego Długo i Szczęśliwie i odejmij od wyniku.</li>
+        <li>Od rezultatu Twojego Wrapped odejmij dotychczasowy wynik obliczeń.</li>
+        <li>Na koniec odejmij jeszcze pięciogwiazdkowy performance Lisy od dotychczasowego wyniku.</li>
+    </ol>
+</div>
+<div class="input-container">
+    <input type="text" maxlength="1" id="digit1">
+    <input type="text" maxlength="1" id="digit2">
+    <input type="text" maxlength="1" id="digit3">
+    <input type="text" maxlength="1" id="digit4">
+</div>
+<button onclick="checkAnswer()">Submit</button>
+<div class="result" id="result">✔️</div>
+<script>
+    async function generateSHA256Hash(input) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(input);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+    function checkAnswer() {
+        const correctAnswer = "96c56127d5ff132709622ca8baa85cd3c5e7aac98c38a5652a12f6e979d78a6d";
+        let userAnswer = "";
+        for (let i = 1; i <= 4; i++) {
+            userAnswer += document.getElementById(`digit${i}`).value;
+        }
+        generateSHA256Hash(userAnswer.toLowerCase()).then(hash => {
+            if (hash === correctAnswer) {
+                document.getElementById('result').style.display = 'block';
+            } else {
+                document.getElementById('result').style.display = 'none';
+            }
+        });
+    }
+</script>
 </body>
 </html>
